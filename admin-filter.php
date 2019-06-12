@@ -26,7 +26,7 @@ function filter_posts_by_taxonomies( $post_type, $which ) {
 		$terms = get_terms( $taxonomy_slug );
 
 		// Display filter HTML
-		echo "<select name='{$taxonomy_slug}[]' id='{$taxonomy_slug}' class='postform select2' multiple>";
+		echo "<select name='{$taxonomy_slug}[]' id='{$taxonomy_slug}' class='postform'>";
 		echo '<option value="">' . sprintf( esc_html__( 'All %s', 'admin_filter_all_text' ), $taxonomy_name ) . '</option>';
 		foreach ( $terms as $term ) {
 			printf(
@@ -39,16 +39,6 @@ function filter_posts_by_taxonomies( $post_type, $which ) {
 		}
 		echo '</select>';
 	}
-	
-    
 
-	echo '<script>$("select.select2").select2();</script>';
 }
 add_action( 'restrict_manage_posts', 'filter_posts_by_taxonomies' , 10, 2);
-
-function admin_style() {
-	$dir = plugin_dir_path( __FILE__ );
-	wp_enqueue_style( "select2-css", plugins_url('lib/select2/select2.css',  __FILE__ ));
-	wp_enqueue_script( "select2-js", plugins_url('lib/select2/select2.js' ,  __FILE__ ));
-}
-add_action('admin_enqueue_scripts', 'admin_style');
