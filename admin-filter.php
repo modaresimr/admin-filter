@@ -17,13 +17,12 @@ function filter_posts_by_taxonomies( $post_type, $which ) {
 	// A list of taxonomy slugs to filter by
 	$taxonomies = get_object_taxonomies($post_type,'objects');
 
-	foreach ( $taxonomies as $taxonomy_obj ) {
+	foreach ( $taxonomies as $taxonomy_slug=>$taxonomy_obj ) {
 	
 		// Retrieve taxonomy data
 		//$taxonomy_obj = get_taxonomy( $taxonomy_slug );
 		if(!$taxonomy_obj->show_admin_column)
 			continue;
-		$taxonomy_slug =array_key_first($taxonomy_obj->rewrite);
 		$taxonomy_name = $taxonomy_obj->labels->name;
 
 		// Retrieve taxonomy terms
