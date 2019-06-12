@@ -48,7 +48,7 @@ add_action( 'restrict_manage_posts', 'filter_posts_by_taxonomies' , 10, 2);
 
 function admin_style() {
 	$dir = plugin_dir_path( __FILE__ );
-	wp_enqueue_style( "select2-css", $dir . 'lib/select2/select2.css' );
-	wp_enqueue_script( "select2-js", $dir . 'lib/select2/select2.js' );
+	wp_enqueue_style( "select2-css", plugins_url('lib/select2/select2.css',  __FILE__ ));
+	wp_enqueue_script( "select2-js", plugins_url('lib/select2/select2.js' ,  __FILE__ ));
 }
 add_action('admin_enqueue_scripts', 'admin_style');
