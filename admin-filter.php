@@ -40,9 +40,15 @@ function filter_posts_by_taxonomies( $post_type, $which ) {
 		echo '</select>';
 	}
 	
-    $dir = plugin_dir_path( __FILE__ );
-	wp_enqueue_style( "select2-css", $dir . 'lib/select2/select2.css' );
-	wp_enqueue_script( "select2-js", $dir . 'lib/select2/select2.js' );
+    
+
 	echo '<script>$("select.select2").select2();</script>';
 }
 add_action( 'restrict_manage_posts', 'filter_posts_by_taxonomies' , 10, 2);
+
+function admin_style() {
+	$dir = plugin_dir_path( __FILE__ );
+	wp_enqueue_style( "select2-css", $dir . 'lib/select2/select2.css' );
+	wp_enqueue_script( "select2-js", $dir . 'lib/select2/select2.js' );
+}
+add_action('admin_enqueue_scripts', 'admin_style');
