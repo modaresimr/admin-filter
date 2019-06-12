@@ -2,9 +2,9 @@
 /*
 Plugin Name: Admin Filter
 Plugin URI: https://github.com/modaresimr/admin-filter
-Description: Checks the health of your WordPress install
+Description: Add filterable column on admin panel
 Version: 0.1.0
-Author: The Health Check Team
+Author: Ali Modaresi
 Author URI: https://github.com/modaresimr/
 GitHub Plugin URI: https://github.com/modaresimr/admin-filter
 */
@@ -23,7 +23,7 @@ function filter_posts_by_taxonomies( $post_type, $which ) {
 		//$taxonomy_obj = get_taxonomy( $taxonomy_slug );
 		if(!$taxonomy_obj->show_admin_column)
 			continue;
-		$taxonomy_slug =$taxonomy_obj->slug;
+		$taxonomy_slug =array_key_first($taxonomy_obj->rewrite);
 		$taxonomy_name = $taxonomy_obj->labels->name;
 
 		// Retrieve taxonomy terms
