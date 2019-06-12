@@ -26,7 +26,7 @@ function filter_posts_by_taxonomies( $post_type, $which ) {
 		$terms = get_terms( $taxonomy_slug );
 
 		// Display filter HTML
-		echo "<select name='{$taxonomy_slug}[]' id='{$taxonomy_slug}' class='postform'>";
+		echo "<select name='{$taxonomy_slug}' id='{$taxonomy_slug}' class='postform'>";
 		echo '<option value="">' . sprintf( esc_html__( 'All %s', 'admin_filter_all_text' ), $taxonomy_name ) . '</option>';
 		foreach ( $terms as $term ) {
 			printf(
